@@ -1,0 +1,75 @@
+print('Введите 1 для перевода календарного дня с юлианского на григорианский')
+print('Введите 2 для перевода календарного дня с григорианского на юлианский')
+x = int(input())
+print('Введите необходимый вам год')
+y = int(input())
+v = y // 100 + 1
+v1 = v
+if v1 > 4:
+    while v1 % 4 != 0:
+        v1 = v1 - 1
+raznisa = v - (v1/4) - 2
+print('Введите месяц(цифрой)')
+month = int( input())
+month = str(month)
+print('число')
+numb = int(input())
+print('Ваша дата:')
+if x == 1:
+    numb += raznisa - 1
+    if (month in '13578' or month == '10' or month == '12') and numb <= 31:
+        print(numb,'.',month,'.',y)
+    elif (month in '13578' or month == '10' or month == '12') and numb > 31:
+        month = int(month)
+        while numb > 31:
+            if month == 12:
+                y += 1
+                month -= 12
+            month += 1
+            numb -= 1
+        print(numb, '.', month, '.', y)
+    elif (month in '469' or month == '11') and numb <= 30:
+        print(numb, '.', month, '.', y)
+    elif (month in '469' or month == '11') and numb > 30:
+        month = int(month)
+        while numb > 30:
+            month += 1
+            numb -= 30
+        print(numb, '.', month, '.', y)
+    elif month == '2' and numb <= 28:
+        print(numb, '.', month, '.', y)
+    elif month == '2' and numb > 28:
+        month = int(month)
+        while numb > 28:
+            month += 1
+            numb -= 28
+        print(numb, '.', month, '.', y)
+elif x == 2:
+    numb -= raznisa - 1
+    if (month in '24689' or month == '11' or month == '1') and numb > 0:
+        print(numb,'.',month,'.',y)
+    elif (month in '24689' or month == '11' or month == '1') and numb <= 0:
+        month = int(month)
+        while numb < 0:
+            if month == 1:
+                y -= 1
+                month += 12
+            month -= 1
+            numb += 31
+        print(numb, '.', month, '.', y)
+    elif (month in '57' or month == '10' or month == '12') and numb > 0:
+        print(numb, '.', month, '.', y)
+    elif (month in '57' or month == '10' or month == '12') and numb <= 0:
+        month = int(month)
+        while numb < 0:
+            month -= 1
+            numb += 30
+        print(numb, '.', month, '.', y)
+    elif month == '3' and numb > 0:
+        print(numb, '.', month, '.', y)
+    elif month == '3' and numb <= 0:
+        month = int(month)
+        while numb < 0:
+            month -= 1
+            numb += 28
+        print(numb, '.', month, '.', y)
