@@ -1,0 +1,20 @@
+print('Введите число для генерации нового по методу Ньютона')
+x = int(input())
+y = x ** 2
+x = str(x)
+y = str(y)
+s = ''
+if len(x) % 2 == 1:
+    sr = len(y) // 2
+    for i in range(sr - len(x) // 2):
+        s += y[i]
+    for i in range(sr + len(x) // 2 + 1, len(y)):
+        s += y[i]
+    print(s, len(y))
+elif len(x) % 2 == 0:
+    sr = len(y) // 2
+    for i in range(sr - len(x) // 2):
+        s += y[i]
+    for i in range(sr + len(x) // 2, len(y)):
+        s += y[i]
+    print(s)
